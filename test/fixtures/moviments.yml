@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  date: 2009-09-18
+  account: MyString
+  value: 9.99
+  description: MyString
+
+two:
+  date: 2009-09-18
+  account: MyString
+  value: 9.99
+  description: MyString

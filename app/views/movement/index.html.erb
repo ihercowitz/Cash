@@ -1,0 +1,64 @@
+<html>
+<head>
+  <title>Cash</title>
+  <%= stylesheet_link_tag "cash" %>
+</head>
+<body>
+<div>
+  <fieldset>
+    <legend>Extrato</legend>
+    <table border="1" width="100%">
+      <tr>
+        <th width="150">Data</th>
+        <th width="100">Valor</th>
+        <th width="80">Conta</th>
+        <th>Descrição</th>
+      </tr>
+      <% @movements.each do |movement| %>
+      <tr><!-- <%= movement.to_json %> -->
+        <td align="center"><%= movement.date %></td>
+        <td align="right" style="<%= "color: red;" if movement.value < 0 %>"><%= number_to_currency movement.value * (movement.value < 0 ? -1 : 1), :separator => ",", :delimiter => "." %></td>
+        <td align="center"><%= movement.account %></td>
+        <td><%= movement.description %></td>
+      </tr>
+      <% end unless !@movements %>
+    </table>
+
+    <table border="1">
+      <tr>
+        <th width="150">Saldo em <%= Date.today %>:</th>
+        <th width="100" align="right" style="<%= "color: red;" if @result < 0 %>"><%= number_to_currency @result * (@result < 0 ? -1 : 1), :separator => ",", :delimiter => "." %></th>
+      </tr>
+      <tr>
+        <th width="150">Lançamentos futuros:</th>
+        <th width="100" align="right" style="<%= "color: red;" if @incoming < 0 %>"><%= number_to_currency @incoming * (@incoming < 0 ? -1 : 1), :separator => ",", :delimiter => "." %></th>
+      </tr>
+    </table>
+  </fieldset>
+</div>
+<div>
+  <fieldset>
+    <legend>Lançamento</legend>
+    <% form_for :movement, :url => {:action => "create"} do |form| %>
+        <%= form.label :date, "Data: " %>
+        <%= form.text_field :date, :value => Date.today %>
+        <br/>
+
+        <%= form.label :account, "Conta: " %>
+        <%= form.text_field :account %>
+        <br/>
+
+        <%= form.label :value, "Valor: " %>
+        <%= form.text_field :value %>
+        <br/>
+
+        <%= form.label :description, "Descrição: " %>
+        <%= form.text_field :description %>
+        <br/>
+
+        <%= submit_tag "Adicionar" %>
+    <% end %>
+  </fieldset>
+</div>
+</body>
+</html>

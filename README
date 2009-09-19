@@ -1,1 +1,7 @@
 == Product Backlog [unsorted]
+* Add transactions classified as credits and debts. Transactions must have date, value and description. Values are always greater than zero.
+* Add a control of bank accounts and its specific limits. Credit cards and pockets can be considered accounts too.
+* Link every transaction with an account. There's no transactions without account.
+* Add support to transaction categories for futher analysis
+* Add multiuser isolation and SSL support
+* Add graphics per bank account, category and/or date

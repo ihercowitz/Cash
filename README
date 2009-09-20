@@ -1,7 +1,16 @@
-== Product Backlog [unsorted]
+== Product Backlog
+= Developing
 * Add transactions classified as credits and debts. Transactions must have date, value and description. Values are always greater than zero.
+
+= Incoming
 * Add a control of bank accounts and its specific limits. Credit cards and pockets can be considered accounts too.
 * Link every transaction with an account. There's no transactions without account.
+* Allow data importation of HSBC history
+
+= Nice to have
 * Add support to transaction categories for futher analysis
 * Add multiuser isolation and SSL support
 * Add graphics per bank account, category and/or date
+* Add jQuery support
+* Add mobile interface
+* Add audit for any changed data
